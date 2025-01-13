@@ -9,6 +9,15 @@ sudo apt install -y build-essential curl git wget software-properties-common
 ## Git configuration
 git config --global user.name "kasrsf"
 git config --global user.email "kasra@kasrsf.com"
+git config --global init.defaultBranch main
+
+# Fonts
+mkdir -p ~/.local/share/fonts
+## JetBrainsMono
+wget -P ~/Downloads https://github.com/ryanoasis/nerd-fonts/releases/download/v3.1.1/JetBrainsMono.zip
+## install the font by unzipping to the fonts directory and updating the font cache
+unzip ~/Downloads/JetBrainsMono.zip -d ~/.local/share/fonts/JetBrainsMono
+fc-cache -fv
 
 # Language-specific environment setup
 ## Python
@@ -90,3 +99,10 @@ sudo systemctl enable --now tailscaled
 
 ## Remmina (screen share)
 sudo apt install remmina remmina-plugin-vnc
+
+## Starship (shell prompt)
+curl -sS https://starship.rs/install.sh | sh
+### add to bash
+echo -e "\n#Enable starship prompt\neval '$(starship init bash)'" >> ~/.bashrc
+### next should select a nerd font for the terminal text
+
